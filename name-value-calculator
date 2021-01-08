@@ -1,0 +1,38 @@
+"use strict";
+
+const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+const magicValue = str => {
+  // variable to store sum
+  let magic = 0;
+  const magicArr = [];
+  let magicResult = '';
+  
+  // Lowercase the string
+  const lowerStr = str.toLowerCase().split('');
+  
+  // Looping trough the string's alphabet and add value to magic variable
+  for(let i = 0; i < lowerStr.length; i++) {
+    
+    if(alphabet.includes(lowerStr[i])) {
+      let x =(alphabet.indexOf(lowerStr[i])) + 1;
+      magic += x ;
+      magicArr.push(x);
+      
+    } else {
+      continue;
+    }
+  }
+  for (let j = 0; j < magicArr.length; j++) {
+    if (j === (magicArr.length - 1)) {
+      magicResult += `${magicArr[j]} = ${magic}`;
+    } else {
+      magicResult += `${magicArr[j]} + `;
+    }
+  }
+  
+  return magicResult;
+};
+
+const myStr = prompt('What is your word ? 😊');
+console.log(magicValue(myStr));
